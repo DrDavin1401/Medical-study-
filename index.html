@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Medical Study</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#102a43}
+.app{max-width:430px;min-height:100vh;margin:auto;background:#fff}
+header{padding:28px 20px 18px;background:#eaf7f8}h1{margin:0;font-size:28px}.sub{margin-top:5px;color:#627d98}
+.search{margin:16px 20px;width:calc(100% - 40px);padding:14px;border:1px solid #d9e2ec;border-radius:14px;font-size:16px}
+main{padding:0 20px 90px}h2{font-size:20px;margin:18px 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{border:1px solid #d9e2ec;border-radius:16px;padding:17px;background:#fff;box-shadow:0 3px 12px #102a4312;cursor:pointer}.card:active{transform:scale(.98)}
+.icon{font-size:27px}.title{font-weight:700;font-size:17px;margin-top:8px}.small{font-size:13px;color:#627d98;margin-top:4px}
+.chips{display:flex;gap:9px;overflow:auto;padding-bottom:5px}.chip{border:0;background:#edf3f7;border-radius:20px;padding:10px 14px;white-space:nowrap;font-size:14px;cursor:pointer}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;display:flex;justify-content:space-around;background:#fff;border-top:1px solid #d9e2ec;padding:9px 0 calc(9px + env(safe-area-inset-bottom));z-index:5}nav button{border:0;background:none;color:#627d98;font-size:11px;cursor:pointer}nav b{display:block;font-size:20px;color:#102a43}
+.view{display:none}.view.active{display:block}.back{border:0;background:none;font-size:16px;padding:18px 0;cursor:pointer}
+.topic{padding:18px;border-radius:16px;background:#eaf7f8;margin-bottom:12px}.topic h3{margin:0 0 7px}
+.q{font-weight:700;font-size:17px;line-height:1.4}.answer{display:block;width:100%;margin:9px 0;padding:13px;border:1px solid #d9e2ec;border-radius:12px;background:#fff;text-align:left;font-size:15px;cursor:pointer}.correct{background:#e7f6ec;border-color:#43a047}.wrong{background:#fdecec;border-color:#e53935}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1>🩺 Medical Study</h1><div class="sub">Dr. Davin • Learn smarter. Practice better.</div></header>
+<div id="home" class="view active"><button onclick="adminLogin()" style="position:absolute;right:12px;top:12px;border:0;background:#fff;border-radius:10px;padding:7px">🔐 Admin</button><input id="search" class="search" placeholder="🔍 Search medical topics..."><main>
+<h2>Quick Study</h2><div class="grid">
+<div class="card" onclick="show('mcq')"><div class="icon">❓</div><div class="title">MCQs</div><div class="small">Test your knowledge</div></div>
+<div class="card" onclick="show('cases')"><div class="icon">🩻</div><div class="title">Clinical Cases</div><div class="small">Practice diagnosis</div></div>
+<div class="card" onclick="show('mnemonics')"><div class="icon">🧠</div><div class="title">Mnemonics</div><div class="small">Remember faster</div></div>
+<div class="card" onclick="show('progress')"><div class="icon">📊</div><div class="title">Progress</div><div class="small">Track learning</div></div></div>
+<h2>Medical Topics</h2><div class="chips">
+<button class="chip" onclick="topic('Pulmonology')">🫁 Pulmonology</button><button class="chip" onclick="topic('Cardiology')">❤️ Cardiology</button><button class="chip" onclick="topic('Neurology')">🧠 Neurology</button><button class="chip" onclick="topic('Nephrology')">🫘 Nephrology</button></div>
+<div id="topicGrid" class="grid" style="margin-top:12px"></div>
+</main></div>
+<div id="topic" class="view"><main><button class="back" onclick="show('home')">← Back</button><div class="topic"><h3 id="topicTitle"></h3><div id="topicText"></div></div><div class="card" onclick="show('assessment')">📝 Lecture Assessment →<div class="small">10 MCQs + clinical case + score</div></div></main></div>
+<div id="mcq" class="view"><main><button class="back" onclick="show('home')">← Back</button><h2>MCQs</h2><div class="card"><div class="q">Which oxygen saturation target is commonly used for most patients with acute COPD exacerbation?</div><button class="answer" onclick="answer(this,false)">A. 100%</button><button class="answer" onclick="answer(this,true)">B. 88–92%</button><button class="answer" onclick="answer(this,false)">C. 70–75%</button><p id="feedback"></p></div></main></div>
+<div id="cases" class="view"><main><button class="back" onclick="show('home')">← Back</button><h2>Clinical Cases</h2><div class="card"><div class="q">A smoker has progressive dyspnea, chronic cough and wheeze. What diagnosis should be considered first?</div><p>Think: chronic airflow limitation.</p><button class="chip" onclick="this.innerText='Answer: COPD'">Show answer</button></div></main></div>
+<div id="mnemonics" class="view"><main><button class="back" onclick="show('home')">← Back</button><h2>Mnemonics</h2><div class="card"><div class="title">COPD acute care: OSCAR</div><p>O = Oxygen<br>S = Spray bronchodilators<br>C = Corticosteroids<br>A = Antibiotics when indicated<br>R = Respiratory support</p></div></main></div>
+
+<div id="assessment" class="view"><main>
+<button class="back" onclick="show('topic')">← Back</button>
+<h2>📝 Lecture Assessment</h2>
+<div class="card">
+<div class="small">10 questions • Pass mark 70%</div>
+<div class="q" style="margin-top:12px">Question 1/10: What is the main purpose of a lecture assessment?</div>
+<button class="answer" onclick="assess(this,false)">A. Memorize everything</button>
+<button class="answer" onclick="assess(this,true)">B. Check understanding and clinical application</button>
+<button class="answer" onclick="assess(this,false)">C. Replace the lecture</button>
+<p id="assessFeedback"></p>
+<button id="nextBtn" class="chip" style="display:none" onclick="finishAssessment()">Next question →</button>
+</div>
+<div class="card" style="margin-top:12px">
+<div class="title">Assessment structure</div>
+<p>📝 10 MCQs<br>🩺 1 clinical case<br>🧠 Key points<br>📊 Final score<br>✅ ≥70% Passed<br>🔄 <70% Review & retry</p>
+</div>
+</main></div>
+
+
+<div id="login" class="view"><main>
+<button class="back" onclick="show('home')">← Back</button>
+<h2>🔐 Dr. Davin Admin Login</h2>
+<div class="card">
+<p>Enter your admin password.</p>
+<input id="adminPassword" type="password" class="search" style="margin:10px 0;width:100%" placeholder="Password">
+<button class="chip" onclick="checkAdminPassword()">Unlock</button>
+<p id="loginMsg"></p>
+</div></main></div>
+<div id="admin" class="view"><main>
+<button class="back" onclick="show('home')">← Back</button>
+<h2>🔐 Dr. Davin — Admin Panel</h2>
+<div class="card">
+<div class="title">+ Add Lesson</div>
+<p class="small">Only the app owner should use this section.</p>
+<input id="lessonSpecialty" class="search" style="margin:10px 0;width:100%" placeholder="Specialty">
+<input id="lessonTitle" class="search" style="margin:10px 0;width:100%" placeholder="Lesson title">
+<textarea id="lessonNotes" style="width:100%;min-height:130px;padding:12px;border:1px solid #d9e2ec;border-radius:12px;font:inherit" placeholder="Lecture notes..."></textarea>
+<div style="margin-top:14px">
+<label style="display:block;font-weight:700;margin-bottom:7px">📄 PDF</label>
+<input id="pdfFile" type="file" accept="application/pdf,.pdf" style="width:100%;padding:10px;border:1px solid #d9e2ec;border-radius:12px">
+</div>
+<div style="margin-top:14px">
+<label style="display:block;font-weight:700;margin-bottom:7px">🎥 Video</label>
+<input id="videoFile" type="file" accept="video/*,.mp4,.mov,.m4v,.webm" style="width:100%;padding:10px;border:1px solid #d9e2ec;border-radius:12px">
+</div>
+<div id="fileMsg" class="small" style="margin-top:8px"></div>
+<button class="chip" style="margin-top:12px" onclick="saveLesson()">💾 Save Lesson</button><button class="chip" style="margin:12px 0 0 8px" onclick="show('lessons')">📚 My Lessons</button>
+<p id="saveMsg"></p>
+</div></main></div>
+
+<div id="lessons" class="view"><main>
+<button class="back" onclick="show('home')">← Back</button>
+<h2>📚 My Lessons</h2>
+<div id="savedLessons"></div>
+</main></div>
+<div id="progress" class="view"><main><button class="back" onclick="show('home')">← Back</button><h2>Progress</h2><div class="card"><div class="title">Your progress</div><p id="score">MCQs completed: 0</p></div></main></div>
+<nav><button onclick="show('home')"><b>⌂</b>Home</button><button onclick="show('home');document.getElementById('topicGrid').scrollIntoView()"><b>📚</b>Topics</button><button onclick="show('mcq')"><b>❓</b>MCQs</button><button onclick="show('progress')"><b>📈</b>Progress</button></nav>
+</div>
+<script>
+const topics=['Hematology','Rheumatology','Gastroenterology','Emergency Medicine','Endocrinology','Infectious Diseases','Pediatrics','Psychiatry'];
+let completed=0;
+document.getElementById('topicGrid').innerHTML=topics.map((x,i)=>`<div class="card" onclick="topic('${x}')"><div class="icon">${['🩸','🦴','🧬','🚑','🧪','🦠','👶','🧠'][i]}</div><div class="title">${x}</div></div>`).join('');
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function topic(name){document.getElementById('topicTitle').innerText=name;document.getElementById('topicText').innerText='Definition • Clinical features • Diagnosis • Treatment • Complications • Key points';show('topic')}
+function assess(el,ok){document.querySelectorAll('#assessment .answer').forEach(x=>x.disabled=true);el.classList.add(ok?'correct':'wrong');document.getElementById('assessFeedback').innerText=ok?'✅ Correct!':'❌ Review this point.';document.getElementById('nextBtn').style.display='inline-block'}
+function finishAssessment(){document.getElementById('assessFeedback').innerText='🎉 Assessment recorded. Continue with the full 10-question assessment in the next version.';document.getElementById('nextBtn').style.display='none'}
+function answer(el,ok){document.querySelectorAll('.answer').forEach(x=>x.disabled=true);el.classList.add(ok?'correct':'wrong');document.getElementById('feedback').innerText=ok?'✅ Correct!':'❌ Not quite. Correct answer: 88–92%';completed++;document.getElementById('score').innerText='MCQs completed: '+completed}
+document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('#topicGrid .card').forEach(c=>c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none')})
+
+
+function adminLogin(){show('login');document.getElementById('adminPassword').value='';document.getElementById('loginMsg').innerText=''}
+function checkAdminPassword(){
+  const password=document.getElementById('adminPassword').value;
+  if(password==='Davin2026'){show('admin')}
+  else document.getElementById('loginMsg').innerText='❌ Incorrect password';
+}
+
+let db;
+const dbReq = indexedDB.open('DrDavinMedicalStudy', 1);
+dbReq.onupgradeneeded = e => e.target.result.createObjectStore('lessons', {keyPath:'id', autoIncrement:true});
+dbReq.onsuccess = e => { db=e.target.result; renderLessons(); };
+
+function adminLogin(){show('login');document.getElementById('adminPassword').value='';document.getElementById('loginMsg').innerText=''}
+function checkAdminPassword(){
+  const password=document.getElementById('adminPassword').value;
+  if(password==='Davin2026'){show('admin');}
+  else document.getElementById('loginMsg').innerText='❌ Incorrect password';
+}
+function saveLesson(){
+  const s=document.getElementById('lessonSpecialty').value.trim();
+  const t=document.getElementById('lessonTitle').value.trim();
+  const n=document.getElementById('lessonNotes').value.trim();
+  const pdf=document.getElementById('pdfFile').files[0] || null;
+  const video=document.getElementById('videoFile').files[0] || null;
+  const msg=document.getElementById('fileMsg');
+  if(!s||!t){msg.innerText='⚠️ Add specialty and title.';return;}
+  if(!db){msg.innerText='⏳ App storage is still loading. Try again.';return;}
+  const lesson={specialty:s,title:t,notes:n,pdf:pdf,video:video,created:new Date().toISOString()};
+  const tx=db.transaction('lessons','readwrite');
+  tx.objectStore('lessons').add(lesson);
+  tx.oncomplete=()=>{
+    msg.innerText='✅ Lesson saved with PDF/video.';
+    document.getElementById('lessonSpecialty').value='';
+    document.getElementById('lessonTitle').value='';
+    document.getElementById('lessonNotes').value='';
+    document.getElementById('pdfFile').value='';
+    document.getElementById('videoFile').value='';
+    renderLessons();
+  };
+  tx.onerror=()=>msg.innerText='❌ Could not save lesson on this device.';
+}
+function renderLessons(){
+  if(!db)return;
+  const box=document.getElementById('savedLessons');
+  if(!box)return;
+  const req=db.transaction('lessons','readonly').objectStore('lessons').getAll();
+  req.onsuccess=()=>{
+    const lessons=req.result;
+    box.innerHTML=lessons.length ? lessons.map(l=>`
+      <div class="card" style="margin-bottom:12px">
+        <div class="title">${escapeHtml(l.title)}</div>
+        <div class="small">${escapeHtml(l.specialty)}</div>
+        <p>${escapeHtml(l.notes||'')}</p>
+        ${l.pdf?`<button class="chip" onclick="openSavedFile(${l.id},'pdf')">📄 Open PDF</button>`:''}
+        ${l.video?`<button class="chip" onclick="openSavedFile(${l.id},'video')">🎥 Watch Video</button>`:''}
+      </div>`).join('') : '<p class="small">No lessons saved yet.</p>';
+  };
+}
+function openSavedFile(id,type){
+  const req=db.transaction('lessons','readonly').objectStore('lessons').get(id);
+  req.onsuccess=()=>{
+    const l=req.result, file=l[type];
+    if(!file)return;
+    const url=URL.createObjectURL(file);
+    if(type==='pdf') window.open(url,'_blank');
+    else {
+      const w=window.open('','_blank');
+      w.document.write(`<title>${escapeHtml(l.title)}</title><video controls autoplay style="width:100%;height:auto" src="${url}"></video>`);
+    }
+  };
+}
+function escapeHtml(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+</script>
+</body></html>

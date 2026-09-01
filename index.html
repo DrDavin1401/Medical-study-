@@ -1,87 +1,90 @@
-<!DOCTYPE html> CAMBODIA
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dr. Davin Medical Study — Admin</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dr. Davin Medical Study</title>
 <style>
-:root{--navy:#071b33;--blue:#0877d1;--cyan:#12b8d6;--bg:#f4f7fb;--white:#fff;--text:#14263a;--muted:#68788b;--line:#e1e8f0;--green:#079669;--red:#d64545}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}
-.top{height:68px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}.brand{font-weight:850;font-size:19px}.top small{opacity:.7}
-.layout{display:flex;min-height:calc(100vh - 68px)}.side{width:245px;background:#fff;border-right:1px solid var(--line);padding:22px 14px}.side button{width:100%;border:0;background:none;text-align:left;padding:13px 14px;border-radius:10px;color:#42566c;font-weight:700;cursor:pointer;margin-bottom:4px}.side button.active,.side button:hover{background:#eaf4ff;color:var(--blue)}
-main{flex:1;padding:32px;max-width:1250px}.pagehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.pagehead h1{margin:0;font-size:30px}.pagehead p{margin:5px 0;color:var(--muted)}
-.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:#fff}.ghost{background:#eef3f8;color:var(--text)}.danger{background:#fff0f0;color:var(--red)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat,.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 18px #1835520b}.stat b{font-size:28px}.stat span{display:block;color:var(--muted);font-size:13px;margin-top:5px}
-.content-grid{display:grid;grid-template-columns:1.5fr .8fr;gap:20px;margin-top:20px}.card h2{font-size:19px;margin-top:0}.course{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.course:last-child{border:0}.course-title{font-weight:800}.meta{font-size:13px;color:var(--muted);margin-top:5px}.price{font-weight:900;color:var(--blue)}
-.modalbg{display:none;position:fixed;inset:0;background:#071b3388;z-index:30;align-items:center;justify-content:center;padding:20px}.modal{background:#fff;width:min(680px,100%);border-radius:18px;padding:24px;max-height:92vh;overflow:auto}.modal h2{margin-top:0}.field{margin:13px 0}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid #cdd8e4;border-radius:9px;padding:11px;background:#fff}.field textarea{min-height:90px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.drop{border:2px dashed #b9c8d8;border-radius:12px;padding:20px;text-align:center;background:#f8fbfe}.file{margin-top:8px;font-size:13px;color:var(--muted)}.modalfoot{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}
-.login{position:fixed;inset:0;background:linear-gradient(135deg,#071b33,#0877d1);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}.loginbox{background:#fff;border-radius:20px;width:min(420px,100%);padding:30px}.loginbox h1{margin-top:0}.hide{display:none!important}
-.library{margin-top:20px}.item{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:15px;padding:16px 0;border-bottom:1px solid var(--line)}.type{height:46px;width:46px;border-radius:12px;display:grid;place-items:center;background:#eaf4ff;font-size:22px}.badge{font-size:11px;font-weight:900;padding:4px 8px;border-radius:20px;background:#e9f8f3;color:var(--green)}.badge.paid{background:#fff4df;color:#a66b00}
-@media(max-width:850px){.side{width:68px}.side button{font-size:0;text-align:center}.side button:first-letter{font-size:20px}.stats{grid-template-columns:1fr 1fr}.content-grid{grid-template-columns:1fr}main{padding:20px}.row{grid-template-columns:1fr}}
+:root{--navy:#071b33;--blue:#0877d1;--bg:#f4f7fb;--card:#fff;--text:#14263a;--muted:#6b7b8d;--line:#e1e8f0;--green:#0a946e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}.top{height:68px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:20}.brand{font-weight:900}.top button{background:#fff;color:var(--navy);border:0;border-radius:9px;padding:9px 13px;font-weight:800;cursor:pointer}.layout{display:flex;min-height:calc(100vh - 68px)}aside{width:235px;background:#fff;border-right:1px solid var(--line);padding:18px}aside button{display:block;width:100%;padding:12px;border:0;background:none;text-align:left;border-radius:9px;margin:4px 0;font-weight:750;cursor:pointer;color:#42566c}aside button.active,aside button:hover{background:#eaf4ff;color:var(--blue)}main{flex:1;padding:28px;max-width:1250px}.head{display:flex;justify-content:space-between;gap:20px;align-items:center}.head h1{margin:0 0 5px}.muted{color:var(--muted)}.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:#fff}.green{background:var(--green);color:#fff}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}.stat b{font-size:28px;display:block}.item{display:grid;grid-template-columns:52px 1fr auto;gap:15px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.ico{width:45px;height:45px;border-radius:11px;background:#eaf4ff;display:grid;place-items:center;font-size:22px}.price{font-weight:900;color:var(--blue)}.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#e9f8f3;color:#087c60;font-size:11px;font-weight:900}.paid{background:#fff3dc;color:#9a6500}.modal,.viewer{display:none;position:fixed;inset:0;background:#071b33aa;z-index:50;align-items:center;justify-content:center;padding:18px}.box{background:#fff;border-radius:18px;width:min(700px,100%);max-height:92vh;overflow:auto;padding:24px}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:11px;border:1px solid #cbd7e3;border-radius:9px}.field textarea{min-height:80px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.drop{border:2px dashed #b9c8d8;border-radius:12px;padding:18px;text-align:center}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.viewerbox{background:#fff;width:100%;height:92vh;border-radius:15px;overflow:hidden;display:flex;flex-direction:column}.viewerhead{padding:12px 16px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between}.viewerbody{flex:1}.viewerbody iframe,.viewerbody video{width:100%;height:100%;border:0}.student{max-width:1150px;margin:auto;padding:30px 20px}.studentgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.course{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.course h3{margin:10px 0 7px}.locked{background:#fff8eb}.login{position:fixed;inset:0;background:linear-gradient(135deg,#071b33,#0877d1);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}.loginbox{background:#fff;padding:30px;border-radius:18px;width:min(420px,100%)}.hidden{display:none!important}.note{font-size:12px;color:var(--muted);background:#f5f8fb;padding:10px;border-radius:9px;margin-top:10px}
+@media(max-width:850px){aside{width:65px}aside button{font-size:0;text-align:center}aside button:first-letter{font-size:20px}.stats{grid-template-columns:1fr 1fr}.studentgrid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.item{grid-template-columns:45px 1fr}.item>div:last-child{grid-column:2}}
+
+<style>
+.production-banner{background:#fff7df;border:1px solid #f0d58a;color:#765600;border-radius:12px;padding:12px 14px;margin-top:18px;font-size:13px}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.provider-grid{grid-template-columns:1fr}}
+</style>
 </style>
 </head>
 <body>
-<div id="login" class="login"><div class="loginbox"><h1>🩺 Dr. Davin</h1><p>Professional Medical Study Admin</p><div class="field"><label>Admin password</label><input id="pw" type="password" placeholder="Enter password"></div><button class="btn primary" style="width:100%" onclick="login()">Sign in</button><p id="loginerr" style="color:#d64545"></p></div></div>
+<div id="adminLogin" class="login"><div class="loginbox"><h1>🩺 Dr. Davin</h1><p>Admin access only</p><div class="field"><label>Admin password</label><input id="adminPw" type="password"></div><button class="btn primary" style="width:100%" onclick="adminLogin()">Sign in</button><p id="aerr" style="color:#c33"></p><button class="btn" style="margin-top:10px;width:100%" onclick="showStudent()">View Student App</button></div></div>
 
-<header class="top"><div class="brand">🩺 Dr. Davin Medical Study</div><small>ADMIN DASHBOARD</small></header>
+<header class="top"><span class="brand">🩺 Dr. Davin Medical Study</span><div><button onclick="showStudent()">Student View</button></div></header>
 <div class="layout">
-<aside class="side">
-<button class="active" onclick="showTab('dashboard',this)">🏠 Dashboard</button>
-<button onclick="showTab('library',this)">📚 My Content</button>
-<button onclick="openModal()">➕ Add PDF / Video</button>
-<button onclick="showTab('settings',this)">⚙️ Settings</button>
+<aside>
+<button class="active" onclick="tab('dash',this)">🏠 Dashboard</button>
+<button onclick="tab('library',this)">📚 My Content</button>
+<button onclick="openAdd()">➕ Add PDF / Video</button>
+<button onclick="tab('payments',this)">💳 Payments</button>
 </aside>
 <main>
-<section id="dashboard">
-<div class="pagehead"><div><h1>Dashboard</h1><p>Manage every PDF and video from one place.</p></div><button class="btn primary" onclick="openModal()">+ Add content</button></div>
-<div class="stats"><div class="stat"><b id="sTotal">0</b><span>Total content</span></div><div class="stat"><b id="sPdf">0</b><span>PDFs</span></div><div class="stat"><b id="sVideo">0</b><span>Videos</span></div><div class="stat"><b id="sPaid">$0</b><span>Paid content value</span></div></div>
-<div class="content-grid"><div class="card"><h2>Recent content</h2><div id="recent"></div></div><div class="card"><h2>Quick actions</h2><p>Add a lesson, set its price, and publish it.</p><button class="btn primary" onclick="openModal()">Add PDF / Video</button></div></div>
-</section>
+<section id="dash"><div class="head"><div><h1>Admin Dashboard</h1><p class="muted">Only you can add content and set prices.</p></div><button class="btn primary" onclick="openAdd()">+ Add content</button></div>
+<div class="stats"><div class="stat"><b id="total">0</b><span class="muted">Content</span></div><div class="stat"><b id="pdfs">0</b><span class="muted">PDFs</span></div><div class="stat"><b id="vids">0</b><span class="muted">Videos</span></div><div class="stat"><b id="value">$0</b><span class="muted">Listed value</span></div></div>
+<div class="card"><h2>Content you added</h2><div id="recent"></div></div></section>
 
-<section id="library" class="hide">
-<div class="pagehead"><div><h1>My Content</h1><p>All your educational files.</p></div><button class="btn primary" onclick="openModal()">+ Add content</button></div>
-<div class="card library" id="items"></div>
-</section>
+<section id="library" class="hidden"><div class="head"><div><h1>My Content</h1><p class="muted">Your uploaded library is visible to admins here.</p></div><button class="btn primary" onclick="openAdd()">+ Add content</button></div><div class="card" id="items"></div></section>
 
-<section id="settings" class="hide">
-<div class="pagehead"><div><h1>Settings</h1><p>Basic platform settings.</p></div></div>
-<div class="card"><h2>Owner</h2><p>Only the administrator should manage prices and content.</p><p><b>Platform:</b> Dr. Davin Medical Study</p></div>
-</section>
+<section id="payments" class="hidden"><div class="head"><div><h1>Payment Settings</h1><p class="muted">Configure where customers should pay.</p></div></div><div class="card"><div class="field"><label>Payment method</label><select id="paymethod"><option>Bank transfer</option><option>KHQR / Bakong</option><option>ABA Pay</option><option>Other payment provider</option></select></div><div class="field"><label>Payment account / merchant ID</label><input id="payaccount" placeholder="Enter your merchant/account ID"></div><div class="field"><label>Payment instructions</label><textarea id="paynote" placeholder="Instructions shown to students after checkout"></textarea></div><button class="btn primary" onclick="savePayment()">Save payment settings</button>
+<div class="production-banner">
+<b>Production setup:</b> GitHub Pages is only the public front end. For real paid PDFs/videos, use private cloud storage + a secure backend + student authentication + your bank/payment provider's official merchant API/webhook. Do not place banking passwords, API secrets, or private file URLs in this HTML.
+</div>
+<div class="card" style="margin-top:14px;padding:16px">
+<h3 style="margin-top:0">Payment provider connection</h3>
+<div class="provider-grid">
+<div class="field"><label>Provider</label><select id="provider"><option>Not connected</option><option>ABA / KHQR</option><option>Bakong / KHQR</option><option>ACLEDA</option><option>Other official provider</option></select></div>
+<div class="field"><label>Merchant ID / Public ID</label><input id="merchant" placeholder="Public merchant identifier"></div>
+</div>
+<p class="note">Only enter a public merchant identifier here. Secret keys must stay on the secure backend.</p>
+<button class="btn" onclick="saveProvider()">Save provider selection</button>
+</div><p class="note">This demo stores settings only in this browser. Real automatic payment confirmation requires an official payment-provider API/webhook and secure backend.</p></div></section>
 </main></div>
 
-<div class="modalbg" id="modal"><div class="modal">
-<h2>➕ Add PDF or Video</h2>
-<p style="color:#68788b">Create one paid or free item. Each item has its own price.</p>
-<div class="row"><div class="field"><label>Content type</label><select id="type"><option value="PDF">PDF</option><option value="Video">Video</option></select></div><div class="field"><label>Status</label><select id="access" onchange="togglePrice()"><option value="paid">Paid</option><option value="free">Free</option></select></div></div>
-<div class="field"><label>Title</label><input id="title" placeholder="e.g. ABG Interpretation"></div>
-<div class="field"><label>Description</label><textarea id="desc" placeholder="Short description for students"></textarea></div>
-<div class="row"><div class="field"><label>Price (USD)</label><input id="price" type="number" min="0" step=".01" value="5"></div><div class="field"><label>Category</label><input id="cat" placeholder="Pulmonology"></div></div>
-<div class="field"><label>File</label><div class="drop">📤 Select your PDF or video<br><input id="file" type="file" accept=".pdf,video/*"><div class="file" id="filename">No file selected</div></div></div>
-<div class="modalfoot"><button class="btn ghost" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="addItem()">Publish content</button></div>
-</div></div>
+<div id="add" class="modal"><div class="box"><h2>➕ Add PDF / Video</h2><div class="row"><div class="field"><label>Type</label><select id="type"><option>PDF</option><option>Video</option></select></div><div class="field"><label>Access</label><select id="access" onchange="togglePrice()"><option value="paid">Paid</option><option value="free">Free</option></select></div></div><div class="field"><label>Title</label><input id="title" placeholder="e.g. Pneumologie EDN"></div><div class="field"><label>Description</label><textarea id="desc"></textarea></div><div class="row"><div class="field"><label>Price (USD)</label><input id="price" type="number" min="0" step=".01" value="3"></div><div class="field"><label>Category</label><input id="cat" placeholder="Pulmonology"></div></div><div class="field"><label>Actual file</label><div class="drop">📤 Select PDF or video<br><input id="file" type="file" accept=".pdf,video/*"><div id="fname" class="muted">No file selected</div></div></div><div class="actions"><button class="btn" onclick="closeAdd()">Cancel</button><button class="btn primary" onclick="publish()">Publish</button></div></div></div>
+
+<div id="viewer" class="viewer"><div class="viewerbox"><div class="viewerhead"><b id="viewerTitle"></b><button class="btn" onclick="closeViewer()">Close</button></div><div class="viewerbody" id="viewerBody"></div></div></div>
+
+<div id="studentApp" class="hidden"><div class="student"><div class="head"><div><h1>🩺 Dr. Davin Medical Study</h1><p class="muted">Learn from PDFs and video lessons.</p></div><button class="btn primary" onclick="showAdmin()">Admin</button></div><div class="card"><h2>Medical Library</h2><p class="muted">Free lessons open immediately. Paid lessons are unlocked after payment.</p><div class="studentgrid" id="studentGrid"></div></div></div></div>
 
 <script>
-const KEY="davin_content_v1";let content=JSON.parse(localStorage.getItem(KEY)||"[]");
-function login(){if(document.getElementById("pw").value==="DavinAdmin"){document.getElementById("login").classList.add("hide")}else document.getElementById("loginerr").textContent="Incorrect password."}
-function showTab(id,btn){["dashboard","library","settings"].forEach(x=>document.getElementById(x).classList.toggle("hide",x!==id));document.querySelectorAll(".side button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");render()}
-function openModal(){document.getElementById("modal").style.display="flex"}
-function closeModal(){document.getElementById("modal").style.display="none";document.getElementById("file").value=""}
-function togglePrice(){document.getElementById("price").disabled=document.getElementById("access").value==="free";if(document.getElementById("price").disabled)document.getElementById("price").value=0}
-document.getElementById("file").onchange=e=>document.getElementById("filename").textContent=e.target.files[0]?.name||"No file selected";
-function addItem(){
- let title=document.getElementById("title").value.trim(),file=document.getElementById("file").files[0],type=document.getElementById("type").value;
- if(!title||!file){alert("Please enter a title and select a file.");return}
- if(type==="PDF"&&!file.name.toLowerCase().endsWith(".pdf")){alert("Please select a PDF file.");return}
- if(type==="Video"&&!file.type.startsWith("video/")){alert("Please select a video file.");return}
- content.unshift({id:Date.now(),title,desc:document.getElementById("desc").value,price:Number(document.getElementById("price").value)||0,access:document.getElementById("access").value,category:document.getElementById("cat").value||"Medical",type,fileName:file.name,date:new Date().toLocaleDateString()});
- localStorage.setItem(KEY,JSON.stringify(content));closeModal();render();alert("Content added successfully.");
+const K="davin_pro_content";let items=JSON.parse(localStorage.getItem(K)||"[]");let urls={};let payment=JSON.parse(localStorage.getItem("davin_payment")||"{}");
+function adminLogin(){if(document.getElementById("adminPw").value==="DavinAdmin")document.getElementById("adminLogin").classList.add("hidden");else document.getElementById("aerr").textContent="Incorrect password."}
+function showStudent(){document.getElementById("adminLogin").classList.add("hidden");document.querySelector(".layout").classList.add("hidden");document.querySelector(".top").classList.add("hidden");document.getElementById("studentApp").classList.remove("hidden");renderStudent()}
+function showAdmin(){document.getElementById("studentApp").classList.add("hidden");document.querySelector(".top").classList.remove("hidden");document.querySelector(".layout").classList.remove("hidden");document.getElementById("adminLogin").classList.remove("hidden")}
+function tab(id,b){["dash","library","payments"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));document.querySelectorAll("aside button").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()}
+function openAdd(){document.getElementById("add").style.display="flex"}function closeAdd(){document.getElementById("add").style.display="none"}
+function togglePrice(){let free=document.getElementById("access").value==="free";document.getElementById("price").disabled=free;if(free)document.getElementById("price").value=0}
+document.getElementById("file").onchange=e=>document.getElementById("fname").textContent=e.target.files[0]?.name||"No file selected";
+function publish(){let f=document.getElementById("file").files[0],type=document.getElementById("type").value,title=document.getElementById("title").value.trim();if(!f||!title){alert("Enter a title and choose a file.");return}if(type==="PDF"&&!f.name.toLowerCase().endsWith(".pdf"))return alert("Choose a PDF.");if(type==="Video"&&!f.type.startsWith("video/"))return alert("Choose a video.");let id=Date.now();urls[id]=URL.createObjectURL(f);items.unshift({id,type,title,desc:document.getElementById("desc").value,price:+document.getElementById("price").value||0,access:document.getElementById("access").value,cat:document.getElementById("cat").value||"Medical",name:f.name});localStorage.setItem(K,JSON.stringify(items));closeAdd();render();alert("Added. It is visible to Admin only in the content manager.");}
+function openAdminItem(id){let x=items.find(a=>a.id==id),u=urls[id];if(!u)return alert("This browser session no longer has the selected file. For permanent storage, connect cloud storage.");document.getElementById("viewerTitle").textContent=x.title;document.getElementById("viewerBody").innerHTML=x.type==="PDF"?`<iframe src="${u}"></iframe>`:`<video src="${u}" controls autoplay></video>`;document.getElementById("viewer").style.display="flex"}
+function closeViewer(){document.getElementById("viewer").style.display="none";document.getElementById("viewerBody").innerHTML=""}
+function del(id){if(confirm("Delete this item?")){items=items.filter(x=>x.id!=id);delete urls[id];localStorage.setItem(K,JSON.stringify(items));render()}}
+function card(x){return `<div class="item"><div class="ico">${x.type==="PDF"?"📄":"🎥"}</div><div><b>${esc(x.title)}</b><div class="muted">${esc(x.cat)} · ${esc(x.name)}</div></div><div><div class="price">${x.access==="free"?"FREE":"$"+x.price.toFixed(2)}</div><button class="btn primary" onclick="openAdminItem(${x.id})">${x.type==="PDF"?"Open PDF":"Watch"}</button> <button class="btn" onclick="del(${x.id})">Delete</button></div></div>`}
+
+function saveProvider(){
+  const provider=document.getElementById("provider").value;
+  const merchant=document.getElementById("merchant").value;
+  localStorage.setItem("davin_provider",JSON.stringify({provider,merchant}));
+  alert("Provider selection saved. The real API/webhook must be connected on a secure backend.");
 }
-function del(id){if(confirm("Delete this content?")){content=content.filter(x=>x.id!==id);localStorage.setItem(KEY,JSON.stringify(content));render()}}
+
 function render(){
- let pdf=content.filter(x=>x.type==="PDF").length,vid=content.filter(x=>x.type==="Video").length,paid=content.filter(x=>x.access==="paid").reduce((a,x)=>a+x.price,0);
- document.getElementById("sTotal").textContent=content.length;document.getElementById("sPdf").textContent=pdf;document.getElementById("sVideo").textContent=vid;document.getElementById("sPaid").textContent="$"+paid.toFixed(2);
- document.getElementById("recent").innerHTML=content.slice(0,6).map(x=>`<div class="course"><div><div class="course-title">${x.type==="PDF"?"📄":"🎥"} ${esc(x.title)}</div><div class="meta">${esc(x.category)} · ${x.fileName}</div></div><div class="price">${x.access==="free"?"FREE":"$"+x.price.toFixed(2)}</div></div>`).join("")||"<p style='color:#68788b'>No content yet.</p>";
- document.getElementById("items").innerHTML=content.map(x=>`<div class="item"><div class="type">${x.type==="PDF"?"📄":"🎥"}</div><div><b>${esc(x.title)}</b><div class="meta">${esc(x.category)} · ${x.fileName} · ${x.date}</div></div><div style="text-align:right"><span class="badge ${x.access==="paid"?"paid":""}">${x.access==="free"?"FREE":"$"+x.price.toFixed(2)}</span><br><button class="btn danger" style="margin-top:7px;padding:7px 10px" onclick="del(${x.id})">Delete</button></div></div>`).join("")||"<p style='color:#68788b'>No content yet. Click “Add content”.</p>";
-}
+const prov=JSON.parse(localStorage.getItem("davin_provider")||"{}");
+if(document.getElementById("provider")) document.getElementById("provider").value=prov.provider||"Not connected";
+if(document.getElementById("merchant")) document.getElementById("merchant").value=prov.merchant||"";
+document.getElementById("total").textContent=items.length;document.getElementById("pdfs").textContent=items.filter(x=>x.type==="PDF").length;document.getElementById("vids").textContent=items.filter(x=>x.type==="Video").length;document.getElementById("value").textContent="$"+items.filter(x=>x.access==="paid").reduce((a,x)=>a+x.price,0).toFixed(2);document.getElementById("recent").innerHTML=items.slice(0,8).map(card).join("")||'<p class="muted">No content yet.</p>';document.getElementById("items").innerHTML=items.map(card).join("")||'<p class="muted">No content yet.</p>';if(payment.method){document.getElementById("paymethod").value=payment.method;document.getElementById("payaccount").value=payment.account||"";document.getElementById("paynote").value=payment.note||""}}
+function savePayment(){payment={method:document.getElementById("paymethod").value,account:document.getElementById("payaccount").value,note:document.getElementById("paynote").value};localStorage.setItem("davin_payment",JSON.stringify(payment));alert("Payment settings saved.")}
+function renderStudent(){document.getElementById("studentGrid").innerHTML=items.map(x=>`<div class="course ${x.access==="paid"?"locked":""}"><div style="font-size:28px">${x.type==="PDF"?"📄":"🎥"}</div><h3>${esc(x.title)}</h3><p class="muted">${esc(x.desc)}</p><p><b>${x.access==="free"?"FREE":"$"+x.price.toFixed(2)}</b></p>${x.access==="free"?`<button class="btn green" onclick="studentOpen(${x.id})">${x.type==="PDF"?"Read PDF":"Watch video"}</button>`:`<button class="btn primary" onclick="checkout(${x.id})">🔒 Buy & unlock</button>`}</div>`).join("")||'<p class="muted">No lessons published yet.</p>'}
+function checkout(id){let x=items.find(a=>a.id==id);alert("Checkout placeholder for "+x.title+" ($"+x.price.toFixed(2)+"). Connect your bank/payment provider API to confirm payment and unlock this item automatically.")}
+function studentOpen(id){let x=items.find(a=>a.id==id),u=urls[id];if(!u)return alert("This demo file is not stored permanently. Production version needs cloud storage.");document.getElementById("viewerTitle").textContent=x.title;document.getElementById("viewerBody").innerHTML=x.type==="PDF"?`<iframe src="${u}"></iframe>`:`<video src="${u}" controls autoplay></video>`;document.getElementById("viewer").style.display="flex"}
 function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 render();
-</script>
-</body></html>
+</script></body></html>
